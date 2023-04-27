@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css" as="style">
+    <title>Clase 10</title>
+</head>
+
+<body>
+    <button id="opcion1">Opción 1</button>
+    <button id="opcion2">Opción 2</button>
+    <button id="opcion3" onclick="respuestaClick('3')">Opción 3</button>
+
+    <!-- Eventos de Mouse -->
+    <p style="background-color:green" onmousedown="mouse(event)">Mouse Down</p> <!-- al hacer clic -->
+    <p style="background-color:red" onmouseup="mouse(event)">Mouse Up</p> <!-- al soltar el clic -->
+    <p style="background-color:lightblue" onclick="mouse(event)">Click</p> <!-- al hacer clic en un elemento válido -->
+    <p style="background-color:blue" onmousemove="mouse(event)">Mouse Move</p> <!-- al mover el mouse sobre el elemento -->
+    <p style="background-color:brown" onmouseover="mouse(event)">Mouse Over</p> <!-- cuando entra el cursor al elemento -->
+    <p style="background-color:yellow" onmouseout="mouse(event)">Mouse Out</p> <!-- cuando sale el cursor de un elemento -->
+
+    <!-- Eventos de Teclado -->
+    <input id="nombre" placeholder="nombre" type="text">
+    <input id="edad" placeholder="edad" type="text">
+
+    <!-- Evento de Cambio -->
+    <select id="eleccion">
+        <option value=""></option>
+        <option value="Auto">Auto</option>
+        <option value="Moto">Moto</option>
+        <option value="Bici">Bici</option>
+        <option value="Monopatín">Monopatín</option>
+    </select>
+
+    <!-- Evento de Input -->
+    <input id="valorIntroducido" type="text">
+
+    <!-- Evento de Submit -->
+    <form id="formulario">
+        <input type="text">
+        <input type="number">
+        <input type="submit" value="Enviar">
+    </form>
+
+    <script src="clase9.js"></script>
+</body>
+
+</html>
