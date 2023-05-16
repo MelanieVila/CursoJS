@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="../css/style.css" as="style">
+    <title>Clase 14</title>
+</head>
+
+<body>
+    <h1>Ejemplo de Toastify</h1>
+    <button id="toasty">toasty</button>
+    <button id="toastyDos">toastyDos</button>
+    <button id="toastyTres">toastyTres</button>
+    <button id="toastyCuatro">toastyCuatro</button>
+    <button id="toastyCinco">toastyCinco</button>
+    <button id="toastySeis">toastySeis</button>
+
+    <script>
+        document.getElementById("toasty").addEventListener("click", toasty)
+        document.getElementById("toastyDos").addEventListener("click", toastyDos)
+        document.getElementById("toastyTres").addEventListener("click", toastyTres)
+        document.getElementById("toastyCuatro").addEventListener("click", toastyCuatro)
+        document.getElementById("toastyCinco").addEventListener("click", toastyCinco)
+        document.getElementById("toastySeis").addEventListener("click", toastySeis)
+
+        function toasty() {
+            Toastify({
+                text: "Probando toast!",
+                duration: 3000
+            }).showToast();
+        }
+
+        function toastyDos() {
+            Toastify({
+                text: "Probando toast!",
+                duration: 3000,
+                gravity: 'bottom',
+                position: 'left'
+            }).showToast();
+        }
+
+        function toastyTres() {
+            Toastify({
+                text: "Probando toast!",
+                duration: 3000,
+                gravity: 'bottom',
+                position: 'left',
+                style: {
+                    background: 'linear-gradient(to right, #00b09b, #96c92d)'
+                }
+            }).showToast();
+        }
+
+        function toastyCuatro() {
+            Toastify({
+                text: "Probando toast!",
+                duration: 3000,
+                gravity: 'bottom',
+                position: 'left',
+                className: 'notificacion my-toast'
+            }).showToast();
+        }
+
+        function toastyCinco() {
+            Toastify({
+                text: "Probando toast!",
+                duration: 3000,
+                onClick: () => {
+
+                    Toastify({
+                        text: 'Clickeaste un Toast!',
+                        duration: 1500,
+                        position: 'left'
+                    }).showToast()
+                }
+            }).showToast();
+        }
+
+        function toastySeis() {
+            Toastify({
+                text: "Click aquí para ir a Coder!",
+                duration: 3000,
+                destination: 'https://www.coderhouse.com'
+            }).showToast();
+        }
+    </script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+</body>
+
+</html>
