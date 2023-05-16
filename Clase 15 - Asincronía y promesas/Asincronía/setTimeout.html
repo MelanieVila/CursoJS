@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 15</title>
+</head>
+
+<body>
+    <body>
+        <h1 id="tituloP">Titulo Principal</h1>
+        <button id="agregarBtn">Agregar Botón</button>
+
+    <script>
+        document.getElementById("agregarBtn").addEventListener("click", agregarBtn)
+
+        function agregarBtn(){ 
+            document.getElementById("agregarBtn").innerHTML += "<button id='agregado'>Botón agregado temporalmente</button>";
+            
+            setTimeout(() => { document.getElementById("agregado").remove() }, 3000)
+        }
+    </script>
+</body>
+</html>

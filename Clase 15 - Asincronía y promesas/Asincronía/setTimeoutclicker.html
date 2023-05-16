@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de clicks</title>
+</head>
+
+<body>
+    <body>
+        <h1>Ey chaval, ¿se te da bien clickear?</h1>
+        <button id="agregarBtn">Jugar</button>
+        <div>Clickeaste <span id="totalClicks"></span> veces</div>
+        <div id="clicker"></div>
+
+    <script>
+        totalClicks;
+        document.getElementById("agregarBtn").addEventListener("click", agregarBtn)
+    
+        function agregarBtn(){
+            totalClicks = 0;
+            document.getElementById("clicker").innerHTML += "<button id='agregado'>Botón agregado temporalmente</button>";
+            document.getElementById("agregado").addEventListener("click", clicker)
+            setTimeout(() => { document.getElementById("agregado").remove() }, 3000)
+        }
+    
+        function clicker(){
+            totalClicks++;
+            document.getElementById("totalClicks").textContent = totalClicks;
+        }
+    </script>    
+</body>
+</html>
