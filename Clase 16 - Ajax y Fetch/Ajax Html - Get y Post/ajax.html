@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="cemedin, medicina nuclear">
+    <meta name="description" content="Sitio web de cemedin y medicina nuclear">
+    <meta name="author" content="Sounds Like Fun">
+    <title>Clientes Cargar</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <h1 class=" flex">Clientes Cargar</h1>
+        <div class="flex">
+            <div class="border padding1 margin1">
+                <h2 class="flex">Cargar Documento Externo</h2>
+                <button id="imagen">Imagen post</button>
+                <button id="imagendos">Imagen post2</button>
+                <button id="imagentres">Imagen post3</button>
+                <button id="imagenG">Imagen get</button>
+                <button id="imagenGdos">Imagen get2</button>
+                <button id="imagenGtres">Imagen get3</button>
+            </div>
+            <div style="background-color: gray">
+                <h3>Aquí dentro irá la respuesta</h3>
+                <div id="respuesta"></div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script>
+        //-------------------------------------------------------------------------------------------------------------
+        //POST
+        document.getElementById("imagen").addEventListener("click", function () { fetchImagen(1) })
+        document.getElementById("imagendos").addEventListener("click", function () { fetchImagen(2) })
+        document.getElementById("imagentres").addEventListener("click", function () { fetchImagen(3) })
+        //-------------------------------------------------------------------------------------------------------------
+        //GET
+        document.getElementById("imagenG").addEventListener("click", function () { fetchImagen(1) })
+        document.getElementById("imagenGdos").addEventListener("click", function () { fetchImagen(2) })
+        document.getElementById("imagenGtres").addEventListener("click", function () { fetchImagen(3) })
+
+        function fetchTabla() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'tabla.html', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.onload = function () {
+                if (this.status == 200) {
+                    document.getElementById('respuesta').innerHTML = this.responseText;
+                } else {
+                    document.getElementById('respuesta').innerHTML = "No se ha encontrado el Documento";
+                }
+            }
+            xhr.send();
+        }
+
+        function fetchImagen(imagenN) {
+            var params = "imagenN=" + imagenN;
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'imagen.php', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.onload = function () {
+                if (this.status == 200) {
+                    document.getElementById('respuesta').innerHTML = this.responseText;
+                } else {
+                    document.getElementById('respuesta').innerHTML = "No se ha encontrado el Documento";
+                }
+            }
+            xhr.send(params);
+        }
+
+        function fetchGet(imagenN) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'imagenG.php?imagenN=' + imagenN, true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.onload = function () {
+                if (this.status == 200) {
+                    document.getElementById('respuesta').innerHTML = this.responseText;
+                } else {
+                    document.getElementById('respuesta').innerHTML = "No se ha encontrado el Documento";
+                }
+            }
+            xhr.send();
+        }
+    </script>
+
+</body>
+
+</html>

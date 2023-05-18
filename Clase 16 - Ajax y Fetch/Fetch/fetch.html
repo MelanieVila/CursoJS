@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="cemedin, medicina nuclear">
+    <meta name="description" content="Sitio web de cemedin y medicina nuclear">
+    <meta name="author" content="Sounds Like Fun">
+    <title>Clientes Cargar</title>
+    <!-- a veces requerirá conectar via CDN con la librería, otras no -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+    <!-- https://www.w3schools.com/xml/ajax_intro.asp#:~:text=AJAX%20just%20uses%20a%20combination,display%20or%20use%20the%20data) -->
+</head>
+
+<body>
+    <div>
+        <h1 class="flex">Clientes Cargar</h1>
+        <div class="flex">
+            <div class="border padding1 margin1">
+                <h2 class="flex">Fetch Posts</h2>
+                <button id="fetch">fetch</button>
+            </div>
+            <div style="background-color: gray">
+                <h3>Aquí dentro irá la respuesta</h3>
+                <div id="respuesta"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("fetch").addEventListener("click", fetchP)
+
+        //--------------------------------------------------------------------------------------------------------
+        //en este PRIMER EJEMPLO analizamos el objeto de respuesta
+        /*
+            function fetchP(){
+                fetch('https://jsonplaceholder.typicode.com/posts')
+                    .then( (response) => console.log(response) )
+            }
+        */
+
+
+        //--------------------------------------------------------------------------------------------------------
+        //en este SEGUNDO EJEMPLO convertimos la respuesta y analizamos detalles
+        /*
+            function fetchP(){
+                fetch('https://jsonplaceholder.typicode.com/posts')
+                    .then( (response) => response.json() )
+                    .then( (json) => console.log(json) )
+            }
+        */
+
+        //--------------------------------------------------------------------------------------------------------
+        //en este TERCER EJEMPLO seleccionamos datos específicos
+        /*
+            function fetchP(){
+                fetch('https://jsonplaceholder.typicode.com/posts')
+                    .then( (response) => response.json() )
+                    .then( (data) => {
+                        console.log( data[0].id )
+                        console.log( data[0].title )
+                        console.log( data[0].body )
+                    })
+            }
+        */
+
+        //--------------------------------------------------------------------------------------------------------
+        //en este CUARTO EJEMPLO recorremos la respuesta con un FOR IN
+        /*
+            function fetchP(){
+                fetch('https://jsonplaceholder.typicode.com/posts')
+                    .then( (response) => response.json() )
+                    .then( (data) => { 
+                        for( var key in data ) {
+                            var value = data[key];
+                            console.log(key);
+                            console.log(value.title);
+                        }
+                    })
+            }
+        */
+
+        //--------------------------------------------------------------------------------------------------------
+        //en este QUINTO EJEMPLO recorremos la respuesta con un FOR OF y el método OBJECT.entries
+        /*
+            function fetchP(){
+                fetch('https://jsonplaceholder.typicode.com/posts')
+                    .then( (response) => response.json() )
+                    .then( (data) => { 
+                        //si no uso object entries no puede iterar el bucle
+                        for (const [key, value] of Object.entries(data)) {
+                            console.log(key);
+                            console.log(value.title);
+                        }
+                    })
+            }
+        */
+
+        //--------------------------------------------------------------------------------------------------------
+        //en este SEXTO EJEMPLO recorremos FOREACH y tiramos dentro del html
+        /*
+            function fetchP(){
+                const lista = document.querySelector('#respuesta')
+        
+                fetch('https://jsonplaceholder.typicode.com/posts')
+                    .then( (response) => response.json() )
+                    .then( (data) => { 
+                        data.forEach((post) => {
+                            const li = document.createElement('li')
+                            li.innerHTML = `<h4>${post.title}</h4><p>${post.body}</p>`
+                            lista.append(li)
+                        })
+                    })
+            }
+        */
+
+        //--------------------------------------------------------------------------------------------------------
+        //en este SEPTIMO EJEMPLO prueba de post
+        /*
+            function fetchP(){
+                fetch('https://jsonplaceholder.typicode.com/posts', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        title: 'Coderhouse',
+                        body: 'Post de prueba',
+                        userId: 1,
+                    }),
+                    headers: {
+                        'Content-type': 'application/json; charset=UTF-8',
+                    },
+                })
+                .then((response) => response.json())
+                .then((data) => console.log(data))
+            }
+        */
+
+        //--------------------------------------------------------------------------------------------------------
+        //en este OCTAVO EJEMPLO rutas relativas
+
+        function fetchP() {
+            const lista = document.querySelector('#respuesta')
+
+            fetch('data.json')
+                .then((res) => res.json())
+                .then((data) => {
+                    data.forEach((producto) => {
+                        const li = document.createElement('li')
+                        li.innerHTML = `<h4>${producto.nombre}</h4>
+                                    <p>${producto.precio}</p>
+                                    <p>Código: ${producto.id}</p>`
+                        lista.append(li)
+                    })
+                })
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="cemedin, medicina nuclear">
+    <meta name="description" content="Sitio web de cemedin y medicina nuclear">
+    <meta name="author" content="Sounds Like Fun">
+    <title>Clientes Cargar</title>
+    <!-- A veces requerirá conectar via CDN con la librería, otras no -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+    <!-- https://www.w3schools.com/xml/ajax_intro.asp#:~:text=AJAX%20just%20uses%20a%20combination,display%20or%20use%20the%20data) -->
+</head>
+
+<body>
+    <div>
+        <h1 class=" flex">Clientes Cargar</h1>   
+        <div class="flex">
+            <div class="border padding1 margin1">
+                <h2 class="flex">Cargar Documento Externo</h2>
+                <button id="tabla">Tabla</button>
+            </div>
+            <div style="background-color: gray">
+                <h3>Aquí dentro irá la respuesta</h3>
+                <div id="respuesta"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("tabla").addEventListener("click", fetchTabla)
+
+        function fetchTabla() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'tabla.html', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.onload=function() {
+                if(this.status==200) {
+                    document.getElementById('respuesta').innerHTML=this.responseText;
+                } else {
+                    document.getElementById('respuesta').innerHTML= "No se ha encontrado el Documento";
+                }
+            }
+            xhr.send();        
+        }
+    </script>
+
+</body>
+</html>
